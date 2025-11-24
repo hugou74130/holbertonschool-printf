@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
 
 int (*get_specifier(char c))(va_list)
 {
