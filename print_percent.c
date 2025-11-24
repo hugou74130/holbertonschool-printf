@@ -14,3 +14,4 @@ int print_percent(va_list args)
  _putchar('%'); /* print the percent sign character */
  return (1);				/* return 1 since exactly one character was printed */
 }
+
