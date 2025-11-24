@@ -2,20 +2,19 @@
 #include <stdarg.h>
 
 int print_string(va_list args)
-
 {
-	int *str;
-	int count = 0;
+	char *str;	   /* déclare un pointeur de caractères */
+	int count = 0; /* déclare et initialise count à 0 */
 
-	str = va_arg(args, char *);
-	if (str == NULL)
+	str = va_arg(args, char *); /* extrait la chaîne des arguments */
+	if (str == NULL)			/* vérifie si str est NULL */
+		str = "(null)";			/* si oui, affiche "(null)" */
+
+	while (*str) /* boucle tant qu'il y a des caractères */
 	{
-		str = 'nul';
-		while (*str)
-
-			_putchar(*str);
-		str++;
-		count++;
+		_putchar(*str); /* affiche le caractère pointé */
+		count++;		/* incrémente le compteur */
+		str++;			/* passe au caractère suivant */
 	}
-	return (count);
+	return (count); /* retourne le nombre de caractères affichés */
 }
