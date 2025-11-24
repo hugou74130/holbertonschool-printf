@@ -1,10 +1,22 @@
 #include "main.h"
 #include <stdarg.h>
 
-int print_string(char *s)
+int print_string(va_list args)
 
 {
-	if (s == NULL)
-		write(1, "Error\n", 7);
-	exit(1);
+	int *str;
+	int count = 0;
+
+	str = va_arg(args, char *);
+	if (str == NULL)
+
+		str = 'nul';
+	while (*str)
+
+		_putchar(*str);
+	str++;
+	count++;
+	{
+		return (count);
+	}
 }
