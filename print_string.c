@@ -9,14 +9,13 @@ int print_string(va_list args)
 
 	str = va_arg(args, char *);
 	if (str == NULL)
-
-		str = 'nul';
-	while (*str)
-
-		_putchar(*str);
-	str++;
-	count++;
 	{
-		return (count);
+		str = 'nul';
+		while (*str)
+
+			_putchar(*str);
+		str++;
+		count++;
 	}
+	return (count);
 }
