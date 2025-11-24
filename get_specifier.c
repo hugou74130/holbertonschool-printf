@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 
 int (*get_specifier(char c))(va_list)
 {
@@ -12,9 +13,9 @@ int (*get_specifier(char c))(va_list)
 
 	};
 	int i = 0;
-	while (specifiers[i].specifier != '\0')
+	while (specifiers[i].c != '\0')
 	{
-		if (specifiers[i].specifier == c)
+		if (specifiers[i].c == c)
 			return (specifiers[i].func);
 		i++;
 	}
