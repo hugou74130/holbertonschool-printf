@@ -27,4 +27,3 @@ int print_string(va_list args)
 	}
 	return (count); /* return the total number of characters printed */
 }
-
