@@ -11,9 +11,13 @@ int print_char(va_list args)
 {
 	char c; /* variable to store the character extracted from va_list */
 	/* extract the next argument as an int, then store it as a char */
+	int result;
 	c = va_arg(args, int);
 	/* write the character to standard output */
-	_putchar(c);
+	result = _putchar(c);
 
-	return (1); /* return 1 since exactly one character was printed */
+	if (result == -1)
+		return (-1);
+
+	return (1);
 }
