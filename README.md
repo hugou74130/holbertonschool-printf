@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/hugou74130/holbertonschool-printf" rel="noopener">
-    <img width=600px height=600px src="https://image.noelshack.com/fichiers/2025/48/2/1764059618-giphy.gif" alt="Project logo">
+    <img width=400px height=400px src="https://image.noelshack.com/fichiers/2025/48/2/1764078468-ok.jpg" alt="Project logo">
   </a>
 </p>
 
