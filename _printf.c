@@ -27,8 +27,8 @@ int _printf(const char *format, ...)
 				count += func(args);
 			else
 			{
-				_puthcar('%');
-				_puctahr(format[i]);
+				_putchar('%');
+				_putchar(format[i]);
 				count += 2;
 			}
 		}
