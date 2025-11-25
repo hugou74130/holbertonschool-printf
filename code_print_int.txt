@@ -1,0 +1,136 @@
+Inclusion
+
+#include "main.h"
+
+# : directive du préprocesseur.
+
+include : inclut un fichier d’en-tête.
+
+"main.h" : fichier local contenant les prototypes (dont _putchar) et définitions nécessaires.
+
+Commentaire de documentation
+
+/**
+ * print_int - Print a signed integer using _putchar
+ * @args: va_list containing the integer to print
+ *
+ * Return: Number of characters printed
+ */
+
+/** … */ : bloc de documentation.
+
+print_int : nom de la fonction.
+
+@args : paramètre, type va_list, qui contient l’entier à afficher.
+
+Return: : décrit la valeur de retour (nombre de caractères imprimés).
+
+Définition de la fonction
+
+int print_int(va_list args)
+{
+
+int : type de retour (nombre de caractères imprimés).
+
+print_int : nom de la fonction.
+
+va_list args : paramètre contenant les arguments variadiques.
+
+{ : début du bloc.
+
+Déclarations de variables
+
+	int n;			 /* store the integer value */
+	int count = 0;	 /* count how many characters are printed */
+	int divisor = 1; /* extract digits by dividing (1, 10, 100, ...) */
+
+int n; : variable pour stocker l’entier extrait.
+
+int count = 0; : compteur du nombre de caractères imprimés.
+
+int divisor = 1; : utilisé pour isoler les chiffres (puissances de 10).
+
+Récupération de l’argument
+
+	n = va_arg(args, int); /* get the integer from the variadic arguments */
+
+va_arg : macro qui extrait le prochain argument de type int depuis args.
+
+Résultat stocké dans n.
+
+Gestion du signe
+
+	if (n < 0) /* if the number is negative */
+	{
+		_putchar('-'); /* print the minus sign */
+		count++;	   /* increase the printed characters count */
+		n = -n;		   /* make the number positive */
+	}
+
+if (n < 0) : test si l’entier est négatif.
+
+_putchar('-'); : imprime le signe moins.
+
+count++; : incrémente le compteur (un caractère imprimé).
+
+n = -n; : convertit en positif pour simplifier l’impression des chiffres.
+
+Trouver le diviseur maximal
+
+	while (n / divisor > 9) /* find the highest power of 10 for the number */
+		divisor *= 10;
+
+while : boucle tant que le quotient est supérieur à 9.
+
+n / divisor : division entière pour tester la taille du nombre.
+
+divisor *= 10; : multiplie le diviseur par 10 pour atteindre la puissance maximale.
+
+Exemple : pour n = 1234, le diviseur devient 1000.
+
+Impression des chiffres
+
+	while (divisor > 0) /* print digits from most significant to least */
+	{
+		_putchar((n / divisor) + '0'); /* print current digit as a character */
+		count++;					   /* increase the printed characters count */
+		n %= divisor;				   /* remove the printed most significant digit */
+		divisor /= 10;				   /* move to the next lower digit */
+	}
+
+while (divisor > 0) : boucle jusqu’à ce que tous les chiffres soient imprimés.
+
+(n / divisor) + '0' :
+
+n / divisor extrait le chiffre courant.
+
++ '0' convertit ce chiffre en caractère ASCII.
+
+_putchar(...) : imprime ce caractère.
+
+count++ : incrémente le compteur.
+
+n %= divisor : supprime le chiffre déjà imprimé.
+
+divisor /= 10 : passe au chiffre suivant.
+
+Retour
+
+	return (count); /* return total number of printed characters */
+}
+
+return (count); : renvoie le nombre total de caractères imprimés.
+
+} : fin de la fonction.
+
+✅ Résumé pédagogique pour le manuel review :
+
+La fonction extrait un entier depuis va_list.
+
+Si négatif, elle imprime - et convertit en positif.
+
+Elle calcule la puissance de 10 la plus grande pour isoler les chiffres.
+
+Elle imprime chaque chiffre de gauche à droite avec _putchar.
+
+Elle retourne le nombre total de caractères imprimés.

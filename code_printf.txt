@@ -1,0 +1,144 @@
+Inclusion
+
+#include "main.h"
+
+#include : directive du préprocesseur.
+
+"main.h" : fichier d’en-tête local, contient les prototypes (_putchar, get_specifier, etc.) et définitions nécessaires.
+
+Définition de la fonction
+
+int _printf(const char *format, ...)
+{
+
+int : type de retour, nombre de caractères imprimés.
+
+_printf : nom de la fonction, réimplémentation personnalisée de printf.
+
+const char *format : chaîne de format, constante (non modifiable).
+
+... : arguments variadiques.
+
+{ : début du bloc.
+
+Déclarations
+
+	va_list args;
+	int i = 0;
+	int count = 0;
+	int (*func)(va_list);
+
+va_list args; : structure pour parcourir les arguments variadiques.
+
+int i = 0; : index pour parcourir la chaîne format.
+
+int count = 0; : compteur du nombre de caractères imprimés.
+
+int (*func)(va_list); : pointeur de fonction vers une fonction prenant va_list et retournant un int. Sert à appeler la bonne fonction selon le spécificateur.
+
+Vérification du format
+
+	if (format == NULL)
+		return (-1);
+
+if (format == NULL) : test si la chaîne de format est nulle.
+
+return (-1); : retourne une erreur (comme le vrai printf).
+
+Initialisation des arguments
+
+	va_start(args, format);
+
+va_start : initialise args pour parcourir les arguments variadiques, en commençant après format.
+
+Boucle principale
+
+	while (format[i])
+	{
+
+while (format[i]) : boucle tant que le caractère courant n’est pas '\0' (fin de chaîne).
+
+Gestion du caractère %
+
+		if (format[i] == '%')
+		{
+			i++;
+			if (format[i] == '\0')
+			{
+				va_end(args);
+				return (-1);
+			}
+			func = get_specifier(format[i]);
+			if (func)
+				count += func(args);
+			else
+			{
+				_putchar('%');
+				_putchar(format[i]);
+				count += 2;
+			}
+		}
+
+if (format[i] == '%') : détecte un spécificateur.
+
+i++; : avance au caractère suivant (le vrai spécificateur).
+
+if (format[i] == '\0') : si % est le dernier caractère, erreur → retourne -1.
+
+func = get_specifier(format[i]); : récupère la fonction associée au spécificateur (ex. %d, %s, %c).
+
+if (func) : si une fonction existe, on l’appelle avec args et on ajoute son retour au compteur.
+
+else : si le spécificateur est inconnu :
+
+imprime % puis le caractère inconnu.
+
+incrémente count de 2.
+
+Gestion des caractères normaux
+
+		else
+		{
+			_putchar(format[i]);
+			count++;
+		}
+
+else : si ce n’est pas %, on imprime directement le caractère.
+
+count++ : incrémente le compteur.
+
+Avancer dans la chaîne
+
+		i++;
+	}
+
+i++ : passe au caractère suivant.
+
+} : fin de la boucle.
+
+Nettoyage et retour
+
+	va_end(args);
+	return (count);
+}
+
+va_end(args); : libère la mémoire associée à va_list.
+
+return (count); : retourne le nombre total de caractères imprimés.
+
+} : fin de la fonction.
+
+✅ Résumé pédagogique pour le manuel review :
+
+_printf parcourt la chaîne format caractère par caractère.
+
+Si % est trouvé, il cherche la fonction correspondante via get_specifier.
+
+Si le spécificateur est reconnu, il appelle la fonction et ajoute son retour au compteur.
+
+Si non reconnu, il imprime % suivi du caractère inconnu.
+
+Si caractère normal, il est imprimé directement.
+
+La fonction retourne le nombre total de caractères imprimés.
+

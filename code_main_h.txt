@@ -1,0 +1,155 @@
+Bloc de garde
+
+#ifndef MAIN_H
+
+# → indique une directive du préprocesseur.
+
+ifndef → “if not defined” → teste si le macro MAIN_H n’est pas encore défini.
+
+MAIN_H → nom du macro choisi comme identifiant unique pour ce header.
+
+#define MAIN_H
+
+#define → crée le macro MAIN_H.
+
+Cela active le garde : tout ce qui suit ne sera inclus qu’une seule fois.
+
+Inclusions
+
+#include <stdarg.h>
+
+#include → insère le contenu du fichier d’en-tête.
+
+<...> → recherche dans les bibliothèques système.
+
+stdarg.h → fournit va_list, va_start, va_arg, va_end.
+
+#include <unistd.h>
+
+unistd.h → donne accès à write, read, etc.
+
+Utilisé pour _putchar (qui appelle write).
+
+#include <stdlib.h>
+
+stdlib.h → fonctions utilitaires (malloc, free, exit).
+
+#include <limits.h>
+
+limits.h → constantes comme INT_MAX, INT_MIN.
+
+Prototypes
+
+int _printf(const char *format, ...);
+
+int → type de retour.
+
+_printf → nom de la fonction.
+
+(const char *format, ...) → premier paramètre : chaîne constante, puis ... = arguments variadiques.
+
+int print_char(va_list args);
+
+print_char → fonction qui prend un va_list.
+
+va_list → type défini dans stdarg.h.
+
+Retourne un int (nombre de caractères écrits).
+
+Même logique pour :
+
+int print_string(va_list args);
+int print_percent(va_list args);
+int print_int(va_list args);
+
+int _putchar(char c);
+
+_putchar → imprime un seul caractère.
+
+Paramètre : char c.
+
+Retourne int (souvent 1 si succès).
+
+int (*get_specifier(char c))(va_list);
+
+Prototype complexe :
+
+get_specifier prend un char c.
+
+Retourne un pointeur vers une fonction.
+
+Cette fonction prend un va_list et retourne un int.
+
+Les parenthèses autour de *get_specifier(char c) sont obligatoires pour préciser que c’est une fonction qui retourne un pointeur de fonction, pas une fonction qui retourne un int.
+
+Structure
+
+typedef struct specifier
+{
+    char c;
+    int (*func)(va_list);
+} specifier_t;
+
+typedef → crée un alias de type.
+
+struct specifier { ... } → définit une structure.
+
+char c; → champ qui stocke le caractère du spécificateur.
+
+int (*func)(va_list); → champ qui stocke un pointeur vers une fonction :
+
+int → type de retour.
+
+(*func) → func est un pointeur de fonction.
+
+(va_list) → la fonction pointée prend un va_list.
+
+specifier_t → alias du type, plus pratique à utiliser.
+
+Fin du garde
+
+#endif
+
+Termine le #ifndef.
+
+Si le fichier est inclus plusieurs fois, le compilateur ignore les inclusions suivantes.
+
+✨ Résumé pour ta man review
+
+Chaque caractère #, *, ;, {}, () a un rôle précis.
+
+Les * entourés de parenthèses dans int (*func)(va_list) et int (*get_specifier(char c))(va_list) sont cruciaux : ils indiquent qu’on manipule des pointeurs de fonctions.
+
+Le header est bien structuré : garde, includes, prototypes, typedef, fin.
+
+### 🗂 Tableau de correspondance des spécificateurs
+
+| caractere (c) | fonctions associées (func) | role |
+| --- | --- | --- |
+| ‘d’ | print_int | Affiche un entier décimal |
+| ‘i’ | print_int | Affiche un entier (identique à `'d'`) |
+| ‘c’ | print_char | Affiche un caractère |
+| ‘s’ | print_string | Affiche une chaîne de caractères |
+| ‘%’ | print_percent | Affiche le symbole `%` |
+| ‘\0’ | NULL | Sentinelle → fin du tableau |
+
+```c
+🔗 Schéma du fonctionnement
+format string: "Hello %s, number: %d"
+
+          |
+          v
+   get_specifier('%s')  --->  retourne pointeur vers print_string()
+   get_specifier('%d')  --->  retourne pointeur vers print_int()
+```
+
+       get_specifier lit le caractère après .
+• 	Cherche dans le tableau specifier_t.
+• 	Retourne le pointeur de fonction correspondant.
+• 	*printf appelle cette fonction avec le va_*list  pour récupérer et afficher l’argument.
+
+✨ Points clés à mettre en avant en review
+• 	Parenthèses autour des pointeurs de fonction : obligatoires pour la syntaxe ( signifie “func est un pointeur vers une fonction qui prend un va_list et retourne un int”).
+• 	Sentinelle  : évite d’avoir à stocker la taille du tableau.
+• 	Extensibilité : ajouter un nouveau spécificateur = ajouter une ligne dans le tableau.
+• 	Lisibilité : séparation claire entre caractère et fonction.

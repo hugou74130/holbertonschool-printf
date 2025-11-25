@@ -1,0 +1,79 @@
+Résumé rapide : Ce fichier retourne un pointeur vers une fonction de traitement de spécificateur en cherchant dans un tableau specifier_t la correspondance pour le caractère c.Si trouvé, il renvoie la fonction associée qui prendra un va_list en argument;
+sinon il renvoie NULL.
+
+				En -
+				tête et prototype
+
+#include "main.h" Inclut l’en - tête local main.h qui doit contenir les définitions nécessaires : la typedef specifier_t, les prototypes print_int, print_char, etc., et l’inclusion de < stdarg.h> pour va_list.Ceci est essentiel pour que le compilateur connaisse les types utilisés.
+
+				int (*get_specifier(char c))(va_list) Prototype un peu dense : lire de gauche à droite — get_specifier est une fonction qui prend un char c et retourne un pointeur vers une fonction.Cette fonction pointée prend un va_list et retourne un int.Donc le type de retour est int (*)(va_list)
+																																																																							.
+
+																																																																			Corps de la fonction
+
+{
+ ouvre le bloc.
+
+					specifier_t specifiers[] = { Déclare un tableau local specifiers d’éléments specifier_t.Chaque élément associe un caractère(c) à une fonction(func).C’est la table de dispatch pour les spécificateurs.
+
+																																		Les lignes suivantes remplissent le tableau :
+
+																																						{'d', print_int},
+																																		associe 'd' à print_int.
+
+																																		{'i', print_int},
+																																		idem pour 'i'.
+
+																																		{'c', print_char},
+																																		'c' → print_char.
+
+																																		{'s', print_string},
+																																		's' → print_string.
+
+																																		{'%', print_percent},
+																																		'%' → print_percent.
+
+																																		{'\0', NULL},
+																																		sentinelle : caractère nul marque la fin du tableau;
+ la fonction associée est NULL.
+
+					La présence d’une sentinelle '\0' est une technique classique pour parcourir un tableau sans stocker sa taille explicitement.
+};
+ferme l’initialisation.
+
+				int i = 0;
+initialise l’index de parcours.
+
+				Boucle de recherche
+
+				while (specifiers[i].c != '\0') Tant que l’entrée courante n’est pas la sentinelle,
+				on compare.
+
+{
+ ouvre le bloc de la boucle.
+
+					if (specifiers[i].c == c) Si le caractère stocké correspond au c passé en paramètre :
+
+					return (specifiers[i].func);
+ Retour immédiat : on renvoie le pointeur vers la fonction associée.Le cast entre parenthèses n’est pas nécessaire mais explicite.
+
+																			i++;
+ incrémente l’index pour tester l’entrée suivante.
+}
+ferme la boucle.
+
+				Fin et valeur par défaut
+
+				return (NULL);
+Si la boucle se termine sans trouver c, la fonction renvoie NULL pour indiquer qu’aucun gestionnaire n’existe pour ce spécificateur.
+}
+ferme la fonction.
+
+				Points importants à retenir
+
+								Table de dispatch : structure claire et extensible;
+ajouter un nouveau spécificateur = ajouter une ligne avant la sentinelle.
+
+																																			Type de retour : fonction retournant un pointeur vers une fonction prenant va_list — utile pour implémenter un _printf personnalisé qui distribue le travail aux handlers.
+
+																																																				Robustesse : vérification via sentinelle évite d’avoir à maintenir une taille séparée.

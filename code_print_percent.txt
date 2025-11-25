@@ -1,0 +1,84 @@
+En-tête et inclusion
+
+#include "main.h"
+
+# : directive du préprocesseur.
+
+include : mot-clé demandant l'inclusion d'un fichier d'en-tête.
+
+"main.h" : nom du fichier d'en-tête entre guillemets (recherche locale).
+
+But : rendre disponibles les prototypes (par ex. _putchar) et types (par ex. va_list) déclarés dans main.h.
+
+Commentaire de documentation
+
+/**
+ * print_percent - Print a percent sign
+ * @args: va_list (unused in this function)
+ *
+ * Return: Number of characters printed (always 1)
+ */
+
+/** et */ : début et fin d’un commentaire de documentation (style Doxygen).
+
+Chaque ligne commençant par  * est une ligne de description.
+
+print_percent : nom de la fonction documentée.
+
+@args : indique le paramètre et précise qu’il est non utilisé.
+
+Return: : décrit la valeur de retour (toujours 1).
+
+Prototype et définition de la fonction
+
+int print_percent(va_list args)
+{
+
+int : type de retour — la fonction renvoie un entier.
+
+print_percent : nom de la fonction.
+
+( va_list args ) :
+
+va_list : type pour listes d’arguments variables (défini dans <stdarg.h>).
+
+args : nom du paramètre.
+
+{ : début du bloc de la fonction.
+
+Marquer l’argument comme non utilisé
+
+	(void)args;	   /* explicitly mark args as unused to avoid warnings */
+
+(void)args; : expression qui convertit args en void — but : indiquer au compilateur que la variable est volontairement non utilisée pour éviter les warnings.
+
+/* ... */ : commentaire expliquant l’intention.
+
+Impression du caractère pourcentage
+
+	_putchar('%'); /* print the percent sign character */
+
+_putchar : fonction (probablement définie ailleurs) qui écrit un caractère sur la sortie.
+
+'%' : caractère littéral pourcentage. Important : dans les chaînes de format printf, % introduit un spécificateur ; ici on passe le caractère directement à _putchar pour afficher un % littéral.
+
+; : termine l’instruction.
+
+Valeur de retour et fin
+
+	return (1);	   /* return 1 since exactly one character was printed */
+}
+
+return : renvoie la valeur au code appelant.
+
+(1) : entier 1 entre parenthèses (style courant en C). Signification : une caractère imprimé.
+
+} : fin du bloc de la fonction.
+
+Points clés
+
+La fonction n’utilise pas args ; c’est volontaire et signalé par (void)args.
+
+Elle imprime exactement un caractère % et renvoie 1.
+
+Le % est spécial dans les formats printf, d’où l’intérêt d’imprimer le caractère directement plutôt que via une chaîne de format.

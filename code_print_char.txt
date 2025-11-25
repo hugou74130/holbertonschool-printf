@@ -1,0 +1,64 @@
+Résumé rapide : Ce fichier définit une fonction _putchar qui écrit un seul caractère sur la sortie standard en appelant l'appel système write. Le code est minimaliste et repose sur <unistd.h> pour déclarer write ; la fonction renvoie le résultat de write, c’est‑à‑dire le nombre d’octets écrits ou une erreur.
+
+Présentation du fichier
+
+Le fichier _putchar.C contient une implémentation simple d’une fonction utilitaire pour afficher un caractère. C’est une construction courante dans de petits projets ou exercices où l’on évite les fonctions de la bibliothèque standard comme putchar et où l’on utilise directement l’appel système write.
+
+Ligne par ligne et caractère par caractère
+
+#include <unistd.h>
+
+#include : directive du préprocesseur qui insère le contenu de l’en‑tête.
+
+<unistd.h> : déclare les interfaces POSIX bas niveau, dont write. Sans cet include, l’appel à write n’est pas correctement déclaré.
+
+int _putchar(char c)
+
+int : type de retour de la fonction. Ici la fonction renvoie un entier (le résultat de write).
+
+_putchar : nom de la fonction ; le préfixe _ est une convention possible pour indiquer une fonction interne.
+
+(char c) : paramètre unique nommé c de type char, c’est‑à‑dire un octet représentant le caractère à écrire.
+
+{ et }
+
+Délimitent le corps de la fonction.
+
+return (write(1, &c, 1));
+
+write : appel système qui écrit des octets depuis un tampon vers un descripteur de fichier.
+
+1 (premier argument) : descripteur de fichier pour la sortie standard (stdout). En POSIX, 0 = stdin, 1 = stdout, 2 = stderr.
+
+&c (deuxième argument) : adresse du caractère c ; write attend un pointeur vers le tampon à écrire.
+
+1 (troisième argument) : nombre d’octets à écrire — ici un seul octet (le caractère).
+
+return : la fonction renvoie la valeur retournée par write, typiquement le nombre d’octets écrits (1) ou -1 en cas d’erreur ; write renvoie un ssize_t, donc la conversion implicite vers int peut tronquer sur certaines plateformes — c’est un point important à noter pour la portabilité et la détection d’erreurs.
+
+Comportement et points d’attention
+
+Effet : écrire un caractère sur la sortie standard immédiatement, sans tamponisation par la stdio (car on utilise l’appel système directement).
+
+Gestion d’erreur : write renvoie -1 et positionne errno en cas d’erreur ; ici _putchar transmet cette valeur brute, mais ne gère pas errno ni les cas où moins d’octets seraient écrits.
+
+Portabilité : l’usage de ssize_t vs int et l’inclusion de <unistd.h> sont des considérations POSIX ; sur systèmes non POSIX, ce code peut nécessiter des adaptations.
+
+Conseils pour le manuel review
+
+Expliquez chaque token (mot‑clé, identificateur, opérateur) comme ci‑dessus.
+
+Soulignez les implications (retour de write, conversion de type, absence de gestion d’erreur).
+
+Montrez un exemple d’utilisation et un test simple pour vérifier le comportement.Pour référence d’implémentations similaires et pédagogiques, on trouve des exemples sur GitHub et des tutoriels sur write et les descripteurs de fichiers.
+
+References (4)
+
+GitHub - badrpink/ft_putchar. https://github.com/badrpink/ft_putchar
+
+C Programming/POSIX Reference/unistd.h/write - Wikibooks. https://en.wikibooks.org/wiki/C_Programming/POSIX_Reference/unistd.h/write
+
+write (2) - Linux manual page - man7.org. https://www.man7.org/linux/man-pages/man2/write.2.html
+
+Input-output system calls - GeeksforGeeks. https://www.geeksforgeeks.org/c/input-output-system-calls-c-create-open-close-read-write/
+

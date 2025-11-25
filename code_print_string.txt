@@ -1,0 +1,110 @@
+Ce fichier gère l’impression d’une chaîne de caractères avec _putchar.
+
+Inclusion des en-têtes
+
+#include "main.h"
+#include <stdarg.h>
+
+# : directive du préprocesseur.
+
+include : demande l’inclusion d’un fichier.
+
+"main.h" : fichier d’en-tête local, contient les prototypes (dont _putchar).
+
+<stdarg.h> : bibliothèque standard qui définit va_list, va_arg, etc. nécessaires pour gérer les arguments variadiques.
+
+Commentaire de documentation
+
+/**
+ * print_string - Print a string
+ * @args: va_list containing the string to print
+ *
+ * Return: Number of characters printed
+ */
+
+/** … */ : bloc de documentation.
+
+print_string : nom de la fonction.
+
+@args : paramètre, type va_list, qui contient la chaîne à afficher.
+
+Return: : décrit la valeur de retour (nombre de caractères imprimés).
+
+Définition de la fonction
+
+int print_string(va_list args)
+{
+
+int : type de retour (nombre de caractères imprimés).
+
+print_string : nom de la fonction.
+
+va_list args : paramètre contenant les arguments variadiques.
+
+{ : début du bloc.
+
+Déclarations de variables
+
+	char *str;	   /* declare a pointer to characters */
+	int count = 0; /* declare and initialize count to 0 */
+
+char *str; : pointeur vers une chaîne de caractères.
+
+int count = 0; : compteur initialisé à zéro, pour suivre le nombre de caractères imprimés.
+
+Extraction de l’argument
+
+	/* extract the string argument from the va_list */
+	str = va_arg(args, char *);
+
+va_arg(args, char *) : macro qui extrait le prochain argument de type char * depuis args.
+
+Résultat stocké dans str.
+
+Gestion du cas NULL
+
+	if (str == NULL)	/*  check if str is NULL */
+		str = "(null)"; /* if yes, set str to "(null)" */
+
+if (str == NULL) : test si la chaîne est nulle.
+
+str = "(null)"; : si oui, on remplace par la chaîne littérale "(null)" pour éviter un crash et afficher quelque chose de lisible.
+
+Boucle d’impression
+
+	/* loop through the string until the null terminator */
+	while (*str)
+	{
+		_putchar(*str); /* print the current character */
+		count++;		/* increment the counter */
+		str++;			/* move to the next character */
+	}
+
+while (*str) : boucle tant que le caractère pointé n’est pas '\0' (fin de chaîne).
+
+_putchar(*str); : imprime le caractère courant.
+
+count++; : incrémente le compteur.
+
+str++; : avance le pointeur vers le caractère suivant.
+
+Retour
+
+	return (count); /* return the total number of characters printed */
+}
+
+return (count); : renvoie le nombre total de caractères imprimés.
+
+} : fin de la fonction.
+
+✅ Résumé pédagogique pour le manuel review :
+
+La fonction récupère une chaîne depuis va_list.
+
+Si la chaîne est NULL, elle affiche "(null)".
+
+Elle parcourt chaque caractère jusqu’au '\0'.
+
+Chaque caractère est imprimé avec _putchar.
+
+Le compteur count est incrémenté à chaque caractère et retourné à la fin.
