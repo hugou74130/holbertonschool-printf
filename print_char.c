@@ -9,11 +9,11 @@
 
 int print_char(va_list args)
 {
-	char c; /* variable to store the character extracted from va_list */
-	/* extract the next argument as an int, then store it as a char */
+	char c;
+
 	int result;
 	c = va_arg(args, int);
-	/* write the character to standard output */
+
 	result = _putchar(c);
 
 	if (result == -1)
