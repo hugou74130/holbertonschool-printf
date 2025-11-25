@@ -1,23 +1,25 @@
 <p align="center">
-  <a href="" rel="noopener">
- <img width=600px height=600px src="https://image.noelshack.com/fichiers/2025/48/2/1764059618-giphy.gif" alt="Project logo"></a>
+  <a href="https://github.com/hugou74130/holbertonschool-printf" rel="noopener">
+    <img width=600px height=600px src="https://image.noelshack.com/fichiers/2025/48/2/1764059618-giphy.gif" alt="Project logo">
+  </a>
 </p>
 
-<h3 align="center">Project Title</h3>
+<h3 align="center">Holbertonschool Printf</h3>
 
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/hugou74130/holbertonschool-printf.svg)](https://github.com/hugou74130/holbertonschool-printf/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/hugou74130/holbertonschool-printf.svg)](https://github.com/hugou74130/holbertonschool-printf/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
 ---
 
-<p align="center"> Few lines describing your project.
-    <br>
+<p align="center">
+Implémentation personnalisée de la fonction printf en C.
+<br>
 </p>
 
 ## 📝 Table of Contents
@@ -34,81 +36,109 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+Ce projet est une implémentation complète de la fonction printf en langage C. L'objectif est de reproduire le comportement de la fonction printf standard de la librairie C, en gérant les différents formats de conversion et les modificateurs associés.
+
+Ce projet a été réalisé dans le cadre de la formation Holbertonschool et démontre une compréhension approfondie de la programmation en C, de la gestion de la mémoire et de la manipulation de chaînes de caractères.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+Ces instructions vous permettront d'obtenir une copie du projet en cours d'exécution sur votre machine locale pour développement et tests. Consultez [deployment](#deployment) pour les notes sur la façon de déployer le projet sur un système en direct.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
+Ce qui vous devez installer pour faire fonctionner le logiciel:
 
 ```
-Give examples
+gcc (GNU Compiler Collection)
+make
+git
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
+Étapes pour installer et configurer l'environnement de développement:
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Clonez le dépôt:
 
 ```
-until finished
+git clone https://github.com/hugou74130/holbertonschool-printf.git
+cd holbertonschool-printf
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
+Compilez le projet:
+
+```
+make
+```
+
+Testez la compilation:
+
+```
+gcc -c *.c
+```
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
-Explain how to run the automated tests for this system.
+Expliquez comment exécuter les tests automatisés pour ce système.
 
-### Break down into end to end tests
+### End to end tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+Tests d'intégration pour vérifier le comportement complet de la fonction printf avec différents formats:
 
 ```
-Give an example
+./printf_test
+```
+
+### Coding style tests
+
+Tests pour vérifier la conformité du code aux normes de style (betty):
+
+```
+betty *.c
 ```
 
 ## 🎈 Usage <a name="usage"></a>
 
-Add notes about how to use the system.
+Pour utiliser cette implémentation de printf dans votre code:
+
+```c
+#include "main.h"
+
+int main(void)
+{
+    _printf("Hello, %s!\n", "World");
+    _printf("Number: %d\n", 42);
+    return (0);
+}
+```
+
+Compilez avec:
+
+```
+gcc main.c _printf.c -o program
+./program
+```
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
-Add additional notes about how to deploy this on a live system.
+Pour déployer ce projet sur un système en direct, assurez-vous que gcc est installé et que vous avez accès au dépôt. Clonez le projet et compilez-le en utilisant les instructions ci-dessus.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [C](https://en.wikipedia.org/wiki/C_(programming_language)) - Language
+- [GCC](https://gcc.gnu.org/) - Compiler
+- [Make](https://www.gnu.org/software/make/) - Build Tool
+- [Git](https://git-scm.com/) - Version Control
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+- [@hugou74130](https://github.com/hugou74130) - Idea & Initial work
+- [@SaraEstelle](https://github.com/SaraEstelle) - Collaboration
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+Voir également la liste des [contributeurs](https://github.com/hugou74130/holbertonschool-printf/contributors) qui ont participé à ce projet.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- Holbertonschool pour l'encadrement et les ressources
+- Inspiration de la fonction printf standard du C
+- Merci à tous les contributeurs et collaborateurs
