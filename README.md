@@ -132,8 +132,8 @@ Pour déployer ce projet sur un système en direct, assurez-vous que gcc est ins
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@hugou74130](https://github.com/hugou74130) - Idea & Initial work
-- [@SaraEstelle](https://github.com/SaraEstelle) - Collaboration
+- [@hugou74130](https://github.com/hugou74130) - Développement complet de la fonction printf, gestion des formats et conversions
+- [@SaraEstelle](https://github.com/SaraEstelle) - Développement complet de la fonction printf, gestion des formats et conversions
 
 Voir également la liste des [contributeurs](https://github.com/hugou74130/holbertonschool-printf/contributors) qui ont participé à ce projet.
 
