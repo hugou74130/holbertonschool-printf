@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://image.noelshack.com/fichiers/2025/48/2/1764059618-giphy.gif" alt="Project logo"></a>
+ <img width=600px height=600px src="https://image.noelshack.com/fichiers/2025/48/2/1764059618-giphy.gif" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Project Title</h3>
