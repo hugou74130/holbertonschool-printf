@@ -8,28 +8,28 @@
 
 int print_int(va_list args)
 {
-	int n;			 /* store the integer value */
-	int count = 0;	 /* count how many characters are printed */
-	int divisor = 1; /* extract digits by dividing (1, 10, 100, ...) */
+	int n;
+	int count = 0;
+	int divisor = 1;
 
-	n = va_arg(args, int); /* get the integer from the variadic arguments */
+	n = va_arg(args, int);
 
-	if (n < 0) /* if the number is negative */
+	if (n < 0)
 	{
-		_putchar('-'); /* print the minus sign */
-		count++;	   /* increase the printed characters count */
-		n = -n;		   /* make the number positive */
+		_putchar('-');
+		count++;
+		n = -n;
 	}
-	while (n / divisor > 9) /* find the highest power of 10 for the number */
+	while (n / divisor > 9)
 		divisor *= 10;
 
-	while (divisor > 0) /* print digits from most significant to least */
+	while (divisor > 0)
 	{
-		_putchar((n / divisor) + '0'); /* print current digit as a character */
-		count++;					   /* increase the printed characters count */
-		n %= divisor;				   /* remove the printed most significant digit */
-		divisor /= 10;				   /* move to the next lower digit */
+		_putchar((n / divisor) + '0');
+		count++;
+		n %= divisor;
+		divisor /= 10;
 	}
 
-	return (count); /* return total number of printed characters */
+	return (count);
 }
