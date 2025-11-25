@@ -17,7 +17,7 @@ int print_char(va_list args)
 	result = _putchar(c);
 
 	if (result == -1)
-	return (-1);
+		return (-1);
 
 	return (1);
 }
