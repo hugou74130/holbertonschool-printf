@@ -325,7 +325,7 @@ _printf("String: %s\n", NULL);
 
 - [@hugou74130](https://github.com/hugou74130) - Développement complet de la fonction _printf, architecture du projet, gestion des spécificateurs et des arguments variables
 
-- [@SaraEstelle](https://github.com/SaraEstelle) - Collaboration sur l'implémentation de print_char, tests et débogage
+- [@SaraEstelle](https://github.com/SaraEstelle) - Développement complet de la fonction _printf, architecture du projet, gestion des spécificateurs et des arguments variables
 
 Voir également la liste complète des [contributeurs](https://github.com/hugou74130/holbertonschool-printf/contributors) qui ont participé à ce projet.
 
