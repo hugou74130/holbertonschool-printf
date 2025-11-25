@@ -10,7 +10,7 @@
 int print_percent(va_list args)
 {
 
-	(void)args;	   /* explicitly mark args as unused to avoid warnings */
-	_putchar('%'); /* print the percent sign character */
-	return (1);	   /* return 1 since exactly one character was printed */
+	(void)args;
+	_putchar('%');
+	return (1);
 }
