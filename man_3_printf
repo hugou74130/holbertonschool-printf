@@ -51,6 +51,83 @@ The following features are **not** supported in this implementation:
 - Length modifiers (h, l, L)
 - Conversion specifiers other than those listed above
 
+## LIBRARIES USED
+
+The `_printf` function utilizes the following standard C libraries:
+
+### 1. `<stdarg.h>`
+
+**Purpose:** Provides macros for handling variable arguments (variadic functions)
+
+**Macros used:**
+- `va_list` – Type for storing variable argument information
+- `va_start(ap, last)` – Initializes the va_list to point to the first variable argument
+- `va_arg(ap, type)` – Retrieves the next argument of the specified type from the variable argument list
+- `va_end(ap)` – Cleans up the va_list after processing all arguments
+
+**Example in _printf:**
+```c
+va_list args;
+va_start(args, format);      /* Start processing arguments after 'format' */
+int value = va_arg(args, int); /* Get next argument as int */
+va_end(args);                /* Clean up */
+```
+
+### 2. `<unistd.h>`
+
+**Purpose:** Provides access to POSIX operating system API, particularly the `write()` system call
+
+**Functions used:**
+- `write(int fd, const void *buf, size_t count)` – Writes data to a file descriptor
+
+**Parameters:**
+- `fd = 1` – File descriptor for stdout (standard output)
+- `buf` – Pointer to the data to write (in this case, a character)
+- `count = 1` – Number of bytes to write (1 byte for a single character)
+
+**Return value:** Returns the number of bytes written (1 on success, -1 on error)
+
+**Example in _putchar:**
+```c
+int _putchar(char c)
+{
+    return (write(1, &c, 1));  /* Write 1 byte to stdout */
+}
+```
+
+### 3. `<stdlib.h>`
+
+**Purpose:** Provides general utility functions from the C standard library
+
+**Functions potentially used:**
+- `malloc()` – Allocates memory dynamically
+- `free()` – Deallocates previously allocated memory
+- Other general utilities
+
+**Note:** In this implementation, `stdlib.h` is included for completeness, though explicit memory allocation/deallocation may not be heavily used in the core functions.
+
+## HOW THE LIBRARIES WORK TOGETHER
+
+```
+User calls _printf("Hello %s, %d\n", "World", 42)
+    ↓
+_printf uses stdarg.h to:
+    - Initialize va_list with va_start()
+    - Extract arguments with va_arg()
+    ↓
+For each character in format string:
+    - If regular character: call _putchar()
+    - If %specifier: call appropriate print_* function
+    ↓
+print_* functions use stdarg.h to:
+    - Retrieve the argument value via va_arg()
+    ↓
+All functions use unistd.h to:
+    - Call write(1, ...) to output to stdout
+    ↓
+Output appears on screen
+```
+
 ## RETURN VALUE
 
 The `_printf` function returns the total number of characters successfully printed to stdout. This count includes all characters from the format string and converted arguments, but excludes the null terminator.
@@ -63,7 +140,13 @@ If an error occurs, the function returns -1.
 
 Print a simple string:
 ```c
-_printf("Hello, World!\n");
+#include "main.h"
+
+int main(void)
+{
+    _printf("Hello, World!\n");
+    return (0);
+}
 ```
 
 Print a character:
@@ -126,6 +209,8 @@ Characters printed: 38
 - The return value includes all characters printed, including newlines and special characters
 - Non-recognized conversion specifiers (format specifiers not in the supported list) are printed as-is with the preceding `%` character
 - The format string itself must be a valid null-terminated string
+- The `<stdarg.h>` library is essential for handling variable number of arguments
+- The `<unistd.h>` library provides low-level I/O operations via the `write()` system call
 
 ## SEE ALSO
 
@@ -133,10 +218,14 @@ Characters printed: 38
 
 `man printf` - manual page for standard printf
 
+`man 2 write` - manual page for the write system call
+
+`man 3 stdarg` - manual page for variable argument lists
+
 ## AUTHORS
 
 - hugou74130 - Main implementation and architecture
-- SaraEstelle - Main implementation and architecture
+- SaraEstelle - Collaboration and testing
 
 ## HISTORY
 
@@ -144,5 +233,5 @@ This man page documents the custom `_printf` implementation developed for the Ho
 
 ---
 
-**Man Page Version:** 1.0
+**Man Page Version:** 1.1
 **Last Updated:** November 2025

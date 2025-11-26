@@ -8,6 +8,7 @@ int (*get_specifier(char c))(va_list)
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
+		{'b', print_binary},
 		{'\0', NULL},
 
 	};
