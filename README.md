@@ -103,7 +103,6 @@ holbertonschool-printf/
 │   └── test_main.c        # Main test file
 │
 ├── README.md              # This file
-└── .gitignore             # Files to ignore by git
 ```
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
