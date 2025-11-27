@@ -84,22 +84,19 @@ The `_printf` project requires creating a function that produces formatted outpu
 
 ```
 holbertonschool-printf/
-│
-├── _printf.c                # Main function (variadic)
-├── _putchar.c               # Function to display a character
-├── main.h                   # Header file with declarations
-├── get_specifier.c          # Function to get the correct specifier
-│
-├── print_char.c             # Displays a character (%c)
-├── print_string.c           # Displays a string (%s)
-├── print_int.c              # Displays an integer (%d, %i)
-├── print_percent.c          # Displays a percent (%%)
-│
-├── flowchart.jpg            # Flowchart of the _printf function's execution
-├── test/                    # Folder containing tests
-│   └── test_main.c          # Main test file
-│
-└── README.md                # This file
+├── test/
+│   └── main.c
+├── _print_f.c
+├── _putchar.c
+├── Flowchart_printf.png
+├── get_specifier.c
+├── main.h
+├── man_3_printf
+├── print_char.c
+├── print_int.c
+├── print_percent
+├── print_string.c
+├── _README.md
 ```
 
 ## 🏁 Getting Started
