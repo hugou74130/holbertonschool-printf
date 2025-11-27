@@ -1,148 +1,77 @@
-# _PRINTF(3)
-
-## NAME
-
-`_printf` - custom formatted output conversion function
-
-## SYNOPSIS
-
-```
-#include "main.h"
-
-int _printf(const char *format, ...);
-```
-
-## DESCRIPTION
-
-The `_printf` function is a custom implementation of the standard C library `printf` function. It produces output according to a format string that can contain format specifiers.
-
-The `_printf` function writes formatted output to the standard output stream (stdout). It processes the format string character by character, recognizing conversion specifiers that begin with a percent sign (`%`) and replacing them with the corresponding argument values.
-
-### Supported Conversion Specifiers
-
+.TH _PRINTF 3 "27 Novembre 2025" "Version 1.0" "Holberton School"
+.SH NAME
+_printf \- custom formatted output conversion function
+.SH SYNOPSIS
+.B #include "main.h"
+.P
+.B int _printf(const char *format, ...);
+.SH DESCRIPTION
+The
+.B _printf
+function is a custom implementation of the standard C library
+.BR printf (3)
+function. It produces output according to a format string that can contain format specifiers.
+.P
+The function writes formatted output to the standard output stream (stdout). It processes the format string character by character, recognizing conversion specifiers that begin with a percent sign (%) and replacing them with the corresponding argument values.
+.SH SUPPORTED CONVERSION SPECIFIERS
 The following conversion specifiers are supported:
-
-* **`%c`** – Print a single character
-  - Takes an integer argument and outputs the corresponding character
-
-* **`%s`** – Print a null-terminated string
-  - Takes a pointer to a character string and outputs all characters until the null terminator
-  - If the pointer is NULL, outputs the string "(null)"
-
-* **`%d`** – Print a signed integer in decimal format
-  - Takes an integer argument and outputs it in base 10
-  - Supports negative numbers with a minus sign prefix
-
-* **`%i`** – Print a signed integer in decimal format
-  - Identical to `%d` specifier
-  - Takes an integer argument and outputs it in base 10
-
-* **`%%`** – Print a literal percent sign
-  - Outputs a single percent character (%)
-  - Does not consume any arguments
-
-### Unsupported Features
-
-The following features are **not** supported in this implementation:
-
+.TP
+.B %c
+Print a single character. Takes an integer argument and outputs the corresponding character.
+.TP
+.B %s
+Print a null-terminated string. Takes a pointer to a character string and outputs all characters until the null terminator. If the pointer is NULL, outputs "(null)".
+.TP
+.B %d
+Print a signed integer in decimal format. Supports negative numbers.
+.TP
+.B %i
+Print a signed integer in decimal format (identical to %d).
+.TP
+.B %%
+Print a literal percent sign (%). Does not consume any arguments.
+.SH UNSUPPORTED FEATURES
+The following features are
+.B not
+supported in this implementation:
+.P
 - Flag characters (-, +, 0, space, #)
+.br
 - Field width specifications
+.br
 - Precision specifications
+.br
 - Length modifiers (h, l, L)
-- Conversion specifiers other than those listed above
-
-## RETURN VALUE
-
-The `_printf` function returns the total number of characters successfully printed to stdout. This count includes all characters from the format string and converted arguments, but excludes the null terminator.
-
-If an error occurs, the function returns -1.
-
-## EXAMPLES
-
-### Basic Usage
-
-Print a simple string:
-```c
-_printf("Hello, World!\n");
-```
-
-Print a character:
-```c
-_printf("Character: %c\n", 'A');
-```
-Output: `Character: A`
-
-### Using Multiple Specifiers
-
-```c
-_printf("Hello %s, number: %d\n", "World", 42);
-```
-Output: `Hello World, number: 42`
-
-### Negative Numbers
-
-```c
-_printf("Temperature: %d degrees\n", -15);
-```
-Output: `Temperature: -15 degrees`
-
-### Using %i Specifier
-
-```c
-_printf("Value: %i\n", 100);
-```
-Output: `Value: 100`
-
-### Printing Percent Signs
-
-```c
-_printf("Progress: 50%%\n");
-```
-Output: `Progress: 50%`
-
-### Handling NULL Strings
-
-```c
-_printf("String pointer: %s\n", NULL);
-```
-Output: `String pointer: (null)`
-
-### Combining Multiple Specifiers
-
-```c
-int count;
-count = _printf("Name: %s, Age: %d, Grade: %c\n", "Alice", 25, 'A');
-printf("Characters printed: %d\n", count);
-```
-Output:
-```
-Name: Alice, Age: 25, Grade: A
-Characters printed: 38
-```
-
-## NOTES
-
-- The function writes directly to stdout without buffering customization
-- The return value includes all characters printed, including newlines and special characters
-- Non-recognized conversion specifiers (format specifiers not in the supported list) are printed as-is with the preceding `%` character
-- The format string itself must be a valid null-terminated string
-
-## SEE ALSO
-
-`printf(3)` - standard C library formatted output function
-
-`man printf` - manual page for standard printf
-
-## AUTHORS
-
-- hugou74130 - Main implementation and architecture
-- SaraEstelle - Main implementation and architecture
-
-## HISTORY
-
-This man page documents the custom `_printf` implementation developed for the Holbertonschool project, November 2025.
-
----
-
-**Man Page Version:** 1.0
-**Last Updated:** November 2025
+.SH RETURN VALUE
+The
+.B _printf
+function returns the total number of characters successfully printed to stdout. This count excludes the null terminator.
+.P
+If an error occurs, the function returns \-1.
+.SH EXAMPLES
+.B Basic Usage:
+.br
+_printf("Hello, World!\\n");
+.P
+.B Printing a character:
+.br
+_printf("Character: %c\\n", 'A');
+.br
+Output: Character: A
+.P
+.B Printing an integer:
+.br
+_printf("Value: %i\\n", 100);
+.br
+Output: Value: 100
+.P
+.B Handling NULL strings:
+.br
+_printf("String: %s\\n", NULL);
+.br
+Output: String: (null)
+.SH SEE ALSO
+.BR printf (3),
+.BR write (2)
+.SH AUTHORS
+Written by Hugo Ramos (hugou74130) and Sara Rebati (SaraEstelle).
