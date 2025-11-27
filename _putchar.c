@@ -7,7 +7,7 @@
  *
  * @c: The character to be written.
  *
- * Return: On success, 1 (the number of bytes written) is returned.
+ * Return: On success, 1 (the number of bytes written) is returned;
  * On error, -1 is returned, and errno is set appropriately.
  */
 
