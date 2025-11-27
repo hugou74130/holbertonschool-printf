@@ -3,6 +3,14 @@
 _printf \- custom formatted output conversion function
 .SH SYNOPSIS
 .B #include "main.h"
+.br
+.B #include <stdarg.h>
+.br
+.B #include <unistd.h>
+.br
+.B #include <stdlib.h>
+.br
+.B #include <limits.h>
 .P
 .B int _printf(const char *format, ...);
 .SH DESCRIPTION
