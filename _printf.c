@@ -1,5 +1,19 @@
 #include "main.h"
 
+/**
+ * _printf - Function to reproduce the functionality of the standard printf,
+ * supporting a limited set of format specifiers.
+ *
+ * @format: Constant character string containing the format to print.
+ * May include conversion specifiers (e.g., %c, %s, %d).
+ * @...:    Variable list of arguments (var_args) corresponding to the format
+ * specifiers present in the 'format' string.
+ *
+ * Return: The total number of characters printed (count).
+ * Returns -1 on error (if 'format' is NULL or if '%' is
+ * the last character of the 'format' string without a specifier).
+ */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
