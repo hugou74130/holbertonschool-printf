@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 			if (format[i] == '\0')
 			{
 				va_end(args);
-				_flush_buffer();
+				flush_buffer();
 				return (-1);
 			}
 			func = get_specifier(format[i]);
@@ -41,6 +41,6 @@ int _printf(const char *format, ...)
 		i++;
 	}
 	va_end(args);
-	_flush_buffer();
+	flush_buffer();
 	return (count);
 }

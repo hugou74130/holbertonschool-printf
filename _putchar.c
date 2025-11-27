@@ -10,13 +10,13 @@ int _putchar(char c)
 	buffer_index++;
 	if (buffer_index == BUFF_SIZE)
 	{
-		_flush_buffer();
+		flush_buffer();
 	}
 
 	return (1);
 }
 
-void _flush_buffer(void)
+void flush_buffer(void)
 {
 	write(1, buffer, buffer_index);
 
