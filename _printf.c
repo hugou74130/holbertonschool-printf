@@ -10,8 +10,8 @@
  * specifiers present in the 'format' string.
  *
  * Return: The total number of characters printed (count).
- * Returns -1 on error (if 'format' is NULL or if '%' is
- * the last character of the 'format' string without a specifier).
+ * Returns -1 on error (if 'format' is NULL or if '%'
+ * is the last character of the 'format' string without a specifier).
  */
 
 int _printf(const char *format, ...)
