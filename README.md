@@ -1,9 +1,17 @@
-# Holbertonschool Printf
+<p align="center">
+  <a href="https://github.com/hugou74130/holbertonschool-printf" rel="noopener">
+    <img width=400px height=400px src="https://image.noelshack.com/fichiers/2025/48/2/1764078468-ok.jpg" alt="Project logo">
+  </a>
+</p>
+
+<h3 align="center">Holbertonschool Printf</h3>
+
+<div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]() [![GitHub Issues](https://img.shields.io/github/issues/hugou74130/holbertonschool-printf.svg)](https://github.com/hugou74130/holbertonschool-printf/issues) [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/hugou74130/holbertonschool-printf.svg)](https://github.com/hugou74130/holbertonschool-printf/pulls) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 ---
-
+<div align="left">
 Custom and complete implementation of the printf function in C.
 
 ## 📝 Table of Contents
@@ -263,7 +271,7 @@ gcc main.c _printf.c _putchar.c print_char.c print_string.c print_int.c print_pe
 
 Below is the flowchart illustrating the execution flow of the `_printf` function:
 
-![Printf Flowchart](./)
+![Printf Flowchart](./Flowchart.png)
 
 ### Flowchart Description:
 
