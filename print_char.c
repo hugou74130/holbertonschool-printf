@@ -12,10 +12,9 @@ int print_char(va_list args)
 	char c;
 
 	int result;
+
 	c = va_arg(args, int);
-
 	result = _putchar(c);
-
 	if (result == -1)
 		return (-1);
 
