@@ -368,5 +368,5 @@ If you have any questions or issues, feel free to:
 
 ---
 
-**Last Updated:** November 2025
+**Last Updated:** 27 November 2025
 **Status:** Active and maintained
