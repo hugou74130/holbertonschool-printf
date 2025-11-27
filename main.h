@@ -6,13 +6,15 @@
 #include <stdlib.h>
 #include <limits.h>
 
+#define BUFF_SIZE 1024
+
 typedef struct specifier
 {
 	char c;
 	int (*func)(va_list);
 
 } specifier_t;
-
+void flush_buffer(void);
 int _printf(const char *format, ...);
 int print_char(va_list args);
 int print_string(va_list args);
