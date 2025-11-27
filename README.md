@@ -271,7 +271,7 @@ gcc main.c _printf.c _putchar.c print_char.c print_string.c print_int.c print_pe
 
 Below is the flowchart illustrating the execution flow of the `_printf` function:
 
-![Printf Flowchart](./Flowchart.png)
+![Printf Flowchart](./Flowchart_printf.png)
 
 ### Flowchart Description:
 
