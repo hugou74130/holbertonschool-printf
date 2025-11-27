@@ -1,26 +1,10 @@
-<p align="center">
-  <a href="https://github.com/hugou74130/holbertonschool-printf" rel="noopener">
-    <img width=400px height=400px src="https://image.noelshack.com/fichiers/2025/48/2/1764078468-ok.jpg" alt="Project logo">
-  </a>
-</p>
+# Holbertonschool Printf
 
-<h3 align="center">Holbertonschool Printf</h3>
-
-<div align="center">
-
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/hugou74130/holbertonschool-printf.svg)](https://github.com/hugou74130/holbertonschool-printf/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/hugou74130/holbertonschool-printf.svg)](https://github.com/hugou74130/holbertonschool-printf/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
-</div>
+[![Status](https://img.shields.io/badge/status-active-success.svg)]() [![GitHub Issues](https://img.shields.io/github/issues/hugou74130/holbertonschool-printf.svg)](https://github.com/hugou74130/holbertonschool-printf/issues) [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/hugou74130/holbertonschool-printf.svg)](https://github.com/hugou74130/holbertonschool-printf/pulls) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 ---
 
-<p align="center">
 Custom and complete implementation of the printf function in C.
-<br>
-</p>
 
 ## 📝 Table of Contents
 
@@ -33,27 +17,28 @@ Custom and complete implementation of the printf function in C.
 - [Running the tests](#tests)
 - [Usage](#usage)
 - [Supported Specifiers](#specifiers)
+- [Flowchart](#flowchart)
 - [Code Examples](#examples)
 - [Built Using](#built_using)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
 
-## 🧐 About <a name = "about"></a>
+## 🧐 About
 
-This project is a complete implementation of the `_printf` function in C. The main objective is to reproduce the behavior of the standard printf function from the C library, handling different format conversion specifiers.
+This project is a complete implementation of the `_printf` function in C. The main objective is to reproduce the behavior of the standard printf function from the C library, handling different format conversion specifiers. This implementation was developed as part of Holbertonschool training and demonstrates a deep understanding of advanced C concepts, including:
 
-This implementation was developed as part of Holbertonschool training and demonstrates a deep understanding of advanced C concepts, including:
 - Variable argument handling (`va_list`, `va_arg`)
 - Function pointer manipulation
 - Use of structures and arrays
 - String manipulation
 - System calls (`write`)
 
-## 📖 Project Description <a name = "project_description"></a>
+## 📖 Project Description
 
 The `_printf` project requires creating a function that produces formatted output according to a format string, similar to the standard `printf` function from the C library.
 
 ### Project Objectives:
+
 - Implement a variadic `_printf` function
 - Handle multiple conversion specifiers
 - Count and return the number of displayed characters
@@ -61,15 +46,17 @@ The `_printf` project requires creating a function that produces formatted outpu
 - Follow Holbertonschool coding standards (Betty)
 
 ### Constraints:
+
 - Do not reproduce printf's buffer management
 - Do not handle flag characters
 - Do not handle field width
 - Do not handle precision
 - Do not handle length modifiers
 
-## ✨ Features <a name = "features"></a>
+## ✨ Features
 
 ### Supported Conversion Specifiers:
+
 - **`%c`** - Displays a single character
 - **`%s`** - Displays a string (handles NULL)
 - **`%d`** - Displays a signed integer in decimal
@@ -77,6 +64,7 @@ The `_printf` project requires creating a function that produces formatted outpu
 - **`%%`** - Displays the percent character (%)
 
 ### Main Features:
+
 - Variable argument handling
 - Exact character counting for display
 - NULL string handling
@@ -84,28 +72,29 @@ The `_printf` project requires creating a function that produces formatted outpu
 - Direct output to stdout
 - Return of the number of printed characters
 
-## 📁 File Structure <a name = "file_structure"></a>
+## 📁 File Structure
 
 ```
 holbertonschool-printf/
 │
-├── _printf.c              # Main function (variadic)
-├── _putchar.c             # Function to display a character
-├── main.h                 # Header file with declarations
-├── get_specifier.c        # Function to get the correct specifier
+├── _printf.c                # Main function (variadic)
+├── _putchar.c               # Function to display a character
+├── main.h                   # Header file with declarations
+├── get_specifier.c          # Function to get the correct specifier
 │
-├── print_char.c           # Displays a character (%c)
-├── print_string.c         # Displays a string (%s)
-├── print_int.c            # Displays an integer (%d, %i)
-├── print_percent.c        # Displays a percent (%%)
+├── print_char.c             # Displays a character (%c)
+├── print_string.c           # Displays a string (%s)
+├── print_int.c              # Displays an integer (%d, %i)
+├── print_percent.c          # Displays a percent (%%)
 │
-├── test/                  # Folder containing tests
-│   └── test_main.c        # Main test file
+├── flowchart.jpg            # Flowchart of the _printf function's execution
+├── test/                    # Folder containing tests
+│   └── test_main.c          # Main test file
 │
-├── README.md              # This file
+└── README.md                # This file
 ```
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+## 🏁 Getting Started
 
 These instructions will allow you to get a copy of the project running on your local machine for development and testing.
 
@@ -122,8 +111,8 @@ git - Version control system
 ### Checking Prerequisites:
 
 ```bash
-gcc --version     # Verify that gcc is installed
-git --version     # Verify that git is installed
+gcc --version # Verify that gcc is installed
+git --version # Verify that git is installed
 ```
 
 ### Installing
@@ -145,7 +134,7 @@ ls -la
 
 You should see all the `.c` files and the `main.h` file.
 
-## 🔨 Compilation <a name = "compilation"></a>
+## 🔨 Compilation
 
 ### Simple compilation with gcc:
 
@@ -154,6 +143,7 @@ gcc -Wall -Wextra -Werror -pedantic *.c -o printf_test
 ```
 
 **Explanation of flags:**
+
 - `-Wall` : Enable all standard warnings
 - `-Wextra` : Enable additional warnings
 - `-Werror` : Treat warnings as errors
@@ -162,8 +152,8 @@ gcc -Wall -Wextra -Werror -pedantic *.c -o printf_test
 ### Compilation with object files:
 
 ```bash
-gcc -c *.c              # Compile all files to .o
-gcc *.o -o printf_test  # Link the objects
+gcc -c *.c # Compile all files to .o
+gcc *.o -o printf_test # Link the objects
 ```
 
 ### Compilation of a single file with the library:
@@ -173,7 +163,7 @@ gcc -c _printf.c _putchar.c print_char.c print_string.c print_int.c print_percen
 gcc main.c *.o -o program
 ```
 
-## 🔧 Running the tests <a name = "tests"></a>
+## 🔧 Running the tests
 
 ### Verify compilation:
 
@@ -224,7 +214,7 @@ gcc test.c _printf.c _putchar.c print_char.c print_string.c print_int.c print_pe
 ./test
 ```
 
-## 🎈 Usage <a name="usage"></a>
+## 🎈 Usage
 
 ### Basic usage:
 
@@ -259,7 +249,7 @@ gcc main.c _printf.c _putchar.c print_char.c print_string.c print_int.c print_pe
 ./program
 ```
 
-## 🎯 Supported Specifiers <a name = "specifiers"></a>
+## 🎯 Supported Specifiers
 
 | Specifier | Description | Example | Output |
 |---|---|---|---|
@@ -269,7 +259,31 @@ gcc main.c _printf.c _putchar.c print_char.c print_string.c print_int.c print_pe
 | `%i` | Signed integer | `_printf("%i", -15)` | `-15` |
 | `%%` | Percent | `_printf("50%%")` | `50%` |
 
-## 💻 Code Examples <a name = "examples"></a>
+## 📊 Flowchart
+
+Below is the flowchart illustrating the execution flow of the `_printf` function:
+
+![Printf Flowchart](./)
+
+### Flowchart Description:
+
+The flowchart demonstrates the following process:
+
+1. **Initialization**: The `_printf` function receives the format string and variable arguments
+2. **Parsing**: Each character of the format string is examined
+3. **Detection**: When a `%` character is found, the next character is identified as a specifier
+4. **Routing**: Based on the specifier type, the appropriate handler function is called:
+   - `%c` → `print_char()`
+   - `%s` → `print_string()`
+   - `%d` / `%i` → `print_int()`
+   - `%%` → `print_percent()`
+5. **Output**: Each character is written to stdout via `_putchar()`
+6. **Counting**: The total number of characters displayed is tracked
+7. **Return**: The function returns the total character count
+
+This architecture ensures modularity, maintainability, and clean separation of concerns through the use of function pointers and dedicated handler functions for each conversion specifier.
+
+## 💻 Code Examples
 
 ### Example 1: Display a character
 
@@ -295,7 +309,8 @@ _printf("Positive: %d, Negative: %d\n", 100, -50);
 ### Example 4: Combine multiple formats
 
 ```c
-_printf("%s scored %d points with grade %c (%.1f%%)\n", "John", 95, 'A');
+_printf("%s scored %d points with grade %c\n", "John", 95, 'A');
+/* Output: John scored 95 points with grade A */
 ```
 
 ### Example 5: Display percentages
@@ -312,7 +327,7 @@ _printf("String: %s\n", NULL);
 /* Output: String: (null) */
 ```
 
-## ⛏️ Built Using <a name = "built_using"></a>
+## ⛏️ Built Using
 
 - [C](https://en.wikipedia.org/wiki/C_(programming_language)) - Programming language
 - [GCC](https://gcc.gnu.org/) - GNU C Compiler
@@ -320,15 +335,14 @@ _printf("String: %s\n", NULL);
 - [Linux/Unix](https://www.linux.org/) - Operating system
 - [Vim/Nano](https://www.vim.org/) - Text editor
 
-## ✍️ Authors <a name = "authors"></a>
+## ✍️ Authors
 
 - [@hugou74130](https://github.com/hugou74130) - Complete development of the _printf function, project architecture, specifier handling and variable argument management
-
 - [@SaraEstelle](https://github.com/SaraEstelle) - Complete development of the _printf function, project architecture, specifier handling and variable argument management
 
 See also the complete list of [contributors](https://github.com/hugou74130/holbertonschool-printf/contributors) who participated in this project.
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+## 🎉 Acknowledgements
 
 - **Holbertonschool** for mentoring, educational resources and learning environment
 - **The standard C printf function** as a source of inspiration
@@ -339,6 +353,7 @@ See also the complete list of [contributors](https://github.com/hugou74130/holbe
 ## 📞 Support
 
 If you have any questions or issues, feel free to:
+
 - Open an [issue](https://github.com/hugou74130/holbertonschool-printf/issues)
 - Check the official [printf](https://man7.org/linux/man-pages/man3/printf.3.html) documentation
 - Contact the authors

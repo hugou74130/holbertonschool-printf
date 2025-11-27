@@ -5,7 +5,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	int i = 0;
 	int count = 0;
-	int (*func)(va_list);
+	int (*func)(va_list) = NULL;
 
 	if (format == NULL)
 		return (-1);
