@@ -9,18 +9,22 @@
 
 int print_int(va_list args)
 {
-	int n;
+	int i = va_arg(args, int);
+	unsigned int n;
 	int count = 0;
-	int divisor = 1;
+	unsigned int divisor = 1;
 
-	n = va_arg(args, int);
-
-	if (n < 0)
+	if (i < 0)
 	{
 		_putchar('-');
 		count++;
-		n = -n;
+		n = (unsigned int)-i;
 	}
+	else
+	{
+		n = (unsigned int)i;
+	}
+
 	while (n / divisor > 9)
 		divisor *= 10;
 
