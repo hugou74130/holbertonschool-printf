@@ -86,7 +86,7 @@ The `_printf` project requires creating a function that produces formatted outpu
 holbertonschool-printf/
 ├── test/
 │   └── main.c
-├── _print_f.c
+├── _printf.c
 ├── _putchar.c
 ├── Flowchart_printf.png
 ├── get_specifier.c
